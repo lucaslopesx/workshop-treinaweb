@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>CEP</th>
+                <th>Ações</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for diaristas in diaristas %}
+                <tr>
+                    <td>{{diaristas.id}}</td>
+                    <td>{{diaristas.nome}}</td>
+                    <td>{{diaristas.email}}</td>
+                    <td>{{diaristas.cep}}</td>
+                    <td>
+                        <a href="{% url 'editar_diarista' diarista.id %}">Editar</a>
+                        <a href="#">Remover</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<a href="{% url 'cadastrar_diarista' %}" class="btn btn-primary">Pagina de Cadastro</a>
+{% endblock conteudo %}

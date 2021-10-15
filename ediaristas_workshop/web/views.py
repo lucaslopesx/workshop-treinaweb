@@ -29,3 +29,9 @@ def editar_diarista(request, diarista_id):
     else:
         form_diarista = diarista_form.DiaristaForm(instance=diarista)
     return render(request, 'form_diarista.html', {'form_diarista': form_diarista})
+
+
+def remover_diarista(request, diarista_id):
+    diarista = Diarista.objects.get(id=diarista_id)
+    diarista.delete()
+    return redirect('listar_diaristas')
